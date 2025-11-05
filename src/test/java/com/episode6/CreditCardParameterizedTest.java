@@ -2,7 +2,7 @@ package com.episode6;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.episode6.enums.Enums.TransactionType;
+import com.episode6.enums.TransactionTypeEnum;
 import com.episode6.models.CreditCard;
 import java.util.EnumSet;
 import java.util.List;
@@ -18,12 +18,12 @@ class CreditCardParameterizedTest {
   @MethodSource("com.episode6.utils.CreditCardDataProvider#validCreditCardConfigs")
   void testCreditCardConfigurations(Map<String, Object> data) {
     @SuppressWarnings("unchecked")
-    Set<TransactionType> types =
+    Set<TransactionTypeEnum> types =
         ((List<String>) data.get("transactionTypesAllowed"))
             .stream()
                 .map(String::toUpperCase)
-                .map(TransactionType::valueOf)
-                .collect(Collectors.toCollection(() -> EnumSet.noneOf(TransactionType.class)));
+                .map(TransactionTypeEnum::valueOf)
+                .collect(Collectors.toCollection(() -> EnumSet.noneOf(TransactionTypeEnum.class)));
 
     CreditCard card =
         new CreditCard.Builder()
@@ -63,9 +63,9 @@ class CreditCardParameterizedTest {
         Exception.class,
         () -> {
           // either fails trying to instantiate an invalid ENUM
-          Set<TransactionType> transactionTypes =
+          Set<TransactionTypeEnum> transactionTypes =
               typeStrings.stream()
-                  .map(s -> TransactionType.valueOf(s.toUpperCase().trim()))
+                  .map(s -> TransactionTypeEnum.valueOf(s.toUpperCase().trim()))
                   .collect(Collectors.toSet());
 
           // or it fails in the builder

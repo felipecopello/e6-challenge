@@ -1,6 +1,6 @@
 package com.episode6.models;
 
-import com.episode6.enums.Enums.TransactionType;
+import com.episode6.enums.TransactionTypeEnum;
 import java.util.EnumSet;
 import java.util.Set;
 import lombok.Getter;
@@ -10,12 +10,13 @@ import lombok.Setter;
 @Setter
 public abstract class AbstractCreditCard {
 
-  protected double creditLimit = 5000.00;
+  protected Double creditLimit = 5000.00;
   protected String nickName = "Default Card";
-  protected double latePaymentFee = 25.00;
-  protected Set<TransactionType> transactionTypesAllowed = EnumSet.of(TransactionType.PURCHASE);
+  protected Double latePaymentFee = 25.00;
+  protected Set<TransactionTypeEnum> transactionTypesAllowed =
+      EnumSet.of(TransactionTypeEnum.PURCHASE);
   protected boolean balanceTransferEnabled = false;
-  protected double balanceTransferFee = 0.0;
+  protected Double balanceTransferFee = 0.0;
 
   public abstract static class Builder<T extends Builder<T, O>, O extends AbstractCreditCard> {
     protected final O instance;
@@ -25,7 +26,7 @@ public abstract class AbstractCreditCard {
     }
 
     @SuppressWarnings("unchecked")
-    public T creditLimit(double creditLimit) {
+    public T creditLimit(Double creditLimit) {
       instance.setCreditLimit(creditLimit);
       return (T) this;
     }
@@ -37,13 +38,13 @@ public abstract class AbstractCreditCard {
     }
 
     @SuppressWarnings("unchecked")
-    public T latePaymentFee(double latePaymentFee) {
+    public T latePaymentFee(Double latePaymentFee) {
       instance.setLatePaymentFee(latePaymentFee);
       return (T) this;
     }
 
     @SuppressWarnings("unchecked")
-    public T transactionTypesAllowed(Set<TransactionType> types) {
+    public T transactionTypesAllowed(Set<TransactionTypeEnum> types) {
       instance.setTransactionTypesAllowed(types);
       return (T) this;
     }
@@ -55,7 +56,7 @@ public abstract class AbstractCreditCard {
     }
 
     @SuppressWarnings("unchecked")
-    public T balanceTransferFee(double fee) {
+    public T balanceTransferFee(Double fee) {
       instance.setBalanceTransferFee(fee);
       return (T) this;
     }
