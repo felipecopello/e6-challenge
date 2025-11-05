@@ -62,12 +62,13 @@ class CreditCardParameterizedTest {
     assertThrows(
         Exception.class,
         () -> {
-          //either fails trying to instantiate an invalid ENUM
-          Set<TransactionType> transactionTypes = typeStrings.stream()
-              .map(s -> TransactionType.valueOf(s.toUpperCase().trim()))
-              .collect(Collectors.toSet());
+          // either fails trying to instantiate an invalid ENUM
+          Set<TransactionType> transactionTypes =
+              typeStrings.stream()
+                  .map(s -> TransactionType.valueOf(s.toUpperCase().trim()))
+                  .collect(Collectors.toSet());
 
-          //or it fails in the builder
+          // or it fails in the builder
           new CreditCard.Builder()
               .nickName(nickName)
               .creditLimit(creditLimit)

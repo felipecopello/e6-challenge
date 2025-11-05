@@ -1,6 +1,5 @@
 package com.episode6.utils;
 
-import com.episode6.enums.Enums.TransactionType;
 import com.episode6.models.CreditCard;
 
 public class CreditCardValidator {
@@ -19,27 +18,13 @@ public class CreditCardValidator {
     validateBalanceTransfer(card);
   }
 
-  private static void validateTransactionType(CreditCard card){
-    if (card.getTransactionTypesAllowed() == null
-        || card.getTransactionTypesAllowed().isEmpty()) {
+  private static void validateTransactionType(CreditCard card) {
+    if (card.getTransactionTypesAllowed() == null || card.getTransactionTypesAllowed().isEmpty()) {
       throw new IllegalStateException("At least one transaction type must be allowed");
-    }
-
-    for (TransactionType type : card.getTransactionTypesAllowed()) {
-      boolean valid = false;
-      for (TransactionType validType : TransactionType.values()) {
-        if (validType == type) {
-          valid = true;
-          break;
-        }
-      }
-      if (!valid) {
-        throw new IllegalStateException("Invalid transaction type detected: " + type);
-      }
     }
   }
 
-  private static void validateBalanceTransfer(CreditCard card){
+  private static void validateBalanceTransfer(CreditCard card) {
     if (card.isBalanceTransferEnabled()) {
       if (card.getBalanceTransferFee() <= 0) {
         throw new IllegalStateException(

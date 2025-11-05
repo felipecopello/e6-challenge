@@ -17,26 +17,6 @@ public abstract class AbstractCreditCard {
   protected boolean balanceTransferEnabled = false;
   protected double balanceTransferFee = 0.0;
 
-  @Override
-  public String toString() {
-    return this.getClass().getSimpleName()
-        + "{"
-        + "creditLimit="
-        + creditLimit
-        + ", nickName='"
-        + nickName
-        + '\''
-        + ", latePaymentFee="
-        + latePaymentFee
-        + ", transactionTypesAllowed="
-        + transactionTypesAllowed
-        + ", balanceTransferEnabled="
-        + balanceTransferEnabled
-        + ", balanceTransferFee="
-        + balanceTransferFee
-        + '}';
-  }
-
   public abstract static class Builder<T extends Builder<T, O>, O extends AbstractCreditCard> {
     protected final O instance;
 

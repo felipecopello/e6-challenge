@@ -32,6 +32,30 @@
     "balanceTransferFee": 100.0
   },
   {
+    "nickName": "Null Transaction Types",
+    "creditLimit": 10000.0,
+    "latePaymentFee": 15.0,
+    "transactionTypesAllowed": null,
+    "balanceTransferEnabled": true,
+    "balanceTransferFee": 100.0
+  },
+  {
+    "nickName": "Negative Credit Limit",
+    "creditLimit": -10000.0,
+    "latePaymentFee": 15.0,
+    "transactionTypesAllowed": ["PURCHASE"],
+    "balanceTransferEnabled": true,
+    "balanceTransferFee": 100.0
+  },
+  {
+    "nickName": "Negative Late Payment Fee",
+    "creditLimit": 10000.0,
+    "latePaymentFee": -15.0,
+    "transactionTypesAllowed": ["PURCHASE"],
+    "balanceTransferEnabled": true,
+    "balanceTransferFee": 100.0
+  },
+  {
     "nickName": "All Fields Invalid",
     "creditLimit": -5000.0,
     "latePaymentFee": -10.0,
