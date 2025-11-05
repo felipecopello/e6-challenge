@@ -1,0 +1,42 @@
+[
+  {
+    "nickName": "Invalid Transaction Type",
+    "creditLimit": 5000.0,
+    "latePaymentFee": 20.0,
+    "transactionTypesAllowed": ["CASH_ADVANCE", "INVALID_TYPE"],
+    "balanceTransferEnabled": false,
+    "balanceTransferFee": 0.0
+  },
+  {
+    "nickName": "Fee Without Transfer Enabled",
+    "creditLimit": 8000.0,
+    "latePaymentFee": 25.0,
+    "transactionTypesAllowed": ["PURCHASE", "FEE"],
+    "balanceTransferEnabled": false,
+    "balanceTransferFee": 50.0
+  },
+  {
+    "nickName": "Enabled Transfer But No Fee",
+    "creditLimit": 12000.0,
+    "latePaymentFee": 30.0,
+    "transactionTypesAllowed": ["PURCHASE"],
+    "balanceTransferEnabled": true,
+    "balanceTransferFee": 0.0
+  },
+  {
+    "nickName": "Empty Transaction Types",
+    "creditLimit": 10000.0,
+    "latePaymentFee": 15.0,
+    "transactionTypesAllowed": [],
+    "balanceTransferEnabled": true,
+    "balanceTransferFee": 100.0
+  },
+  {
+    "nickName": "All Fields Invalid",
+    "creditLimit": -5000.0,
+    "latePaymentFee": -10.0,
+    "transactionTypesAllowed": ["UNKNOWN"],
+    "balanceTransferEnabled": false,
+    "balanceTransferFee": 99.0
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "nickName": "Default Card",
+    "creditLimit": 5000.0,
+    "latePaymentFee": 25.0,
+    "transactionTypesAllowed": ["PURCHASE"],
+    "balanceTransferEnabled": false,
+    "balanceTransferFee": 0.0
+  },
+  {
+    "nickName": "Platinum Card",
+    "creditLimit": 20000.0,
+    "latePaymentFee": 50.0,
+    "transactionTypesAllowed": ["CASH_ADVANCE", "PURCHASE", "FEE"],
+    "balanceTransferEnabled": true,
+    "balanceTransferFee": 2.5
+  },
+  {
+    "nickName": "Shopper's Delight",
+    "creditLimit": 7000.0,
+    "latePaymentFee": 20.0,
+    "transactionTypesAllowed": ["PURCHASE"],
+    "balanceTransferEnabled": false,
+    "balanceTransferFee": 0.0
+  },
+  {
+    "nickName": "Travel Card",
+    "creditLimit": 10000.0,
+    "latePaymentFee": 35.0,
+    "transactionTypesAllowed": ["CASH_ADVANCE", "FEE"],
+    "balanceTransferEnabled": true,
+    "balanceTransferFee": 3.0
+  },
+  {
+    "nickName": "Quick Cash",
+    "creditLimit": 8000.0,
+    "latePaymentFee": 40.0,
+    "transactionTypesAllowed": ["CASH_ADVANCE"],
+    "balanceTransferEnabled": false,
+    "balanceTransferFee": 0.0
+  }
+]
