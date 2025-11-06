@@ -10,13 +10,13 @@ import lombok.Setter;
 @Setter
 public abstract class AbstractCreditCard {
 
-  protected Double creditLimit = 5000.00;
-  protected String nickName = "Default Card";
-  protected Double latePaymentFee = 25.00;
-  protected Set<TransactionTypeEnum> transactionTypesAllowed =
+  private Double creditLimit = 5000.00;
+  private String nickName = "Default Card";
+  private Double latePaymentFee = 25.00;
+  private Set<TransactionTypeEnum> transactionTypesAllowed =
       EnumSet.of(TransactionTypeEnum.PURCHASE);
-  protected boolean balanceTransferEnabled = false;
-  protected Double balanceTransferFee = 0.0;
+  private boolean balanceTransferEnabled = false;
+  private Double balanceTransferFee = 0.0;
 
   public abstract static class Builder<T extends Builder<T, O>, O extends AbstractCreditCard> {
     protected final O instance;
