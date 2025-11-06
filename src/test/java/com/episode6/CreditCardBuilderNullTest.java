@@ -6,6 +6,7 @@ import com.episode6.enums.TransactionTypeEnum;
 import com.episode6.exceptions.InvalidParameterException;
 import com.episode6.models.CreditCard;
 import java.util.Collections;
+import java.util.EnumSet;
 import org.junit.jupiter.api.Test;
 
 class CreditCardBuilderNullTest {
@@ -69,5 +70,16 @@ class CreditCardBuilderNullTest {
         InvalidParameterException.class,
         () -> builder.latePaymentFee(null).build(),
         "Expected builder to throw InvalidParameterException when creditLimit is null");
+  }
+
+  @Test
+  void shouldBuildDefaultWhenNoValueIsProvided() {
+    CreditCard card = new CreditCard.Builder().build();
+    assertEquals(card.getNickName(), "Default Card");
+    assertEquals(card.getCreditLimit(), 5000.00);
+    assertEquals(card.getLatePaymentFee(), 25.00);
+    assertFalse(card.isBalanceTransferEnabled());
+    assertEquals(card.getBalanceTransferFee(), 0.0);
+    assertEquals(card.getTransactionTypesAllowed(), EnumSet.of(TransactionTypeEnum.PURCHASE));
   }
 }
