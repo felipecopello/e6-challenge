@@ -1,6 +1,7 @@
-package com.episode6.service;
+package com.episode6.services;
 
 import com.episode6.enums.TransactionTypeEnum;
+import com.episode6.exceptions.InvalidParameterException;
 import com.episode6.models.CreditCard;
 import java.util.Set;
 
@@ -8,19 +9,19 @@ public class CreditCardValidatorImpl implements CreditCardValidatorService {
 
   public static void validate(CreditCard card) {
     if (card == null) {
-      throw new IllegalStateException("Credit card cannot be null");
+      throw new InvalidParameterException("Credit card cannot be null");
     }
 
     if (card.getCreditLimit() == null || card.getCreditLimit() <= 0) {
-      throw new IllegalStateException("Credit limit must be a positive number");
+      throw new InvalidParameterException("Credit limit must be a positive number");
     }
 
     if (card.getNickName() == null || card.getNickName().isBlank()) {
-      throw new IllegalStateException("Nickname cannot be null or empty");
+      throw new InvalidParameterException("Nickname cannot be null or empty");
     }
 
     if (card.getLatePaymentFee() == null || card.getLatePaymentFee() < 0) {
-      throw new IllegalStateException("Late payment fee cannot be null or negative");
+      throw new InvalidParameterException("Late payment fee cannot be null or negative");
     }
 
     validateTransactionType(card);
@@ -30,7 +31,7 @@ public class CreditCardValidatorImpl implements CreditCardValidatorService {
   private static void validateTransactionType(CreditCard card) {
     Set<TransactionTypeEnum> types = card.getTransactionTypesAllowed();
     if (types == null || types.isEmpty()) {
-      throw new IllegalStateException("At least one transaction type must be allowed");
+      throw new InvalidParameterException("At least one transaction type must be allowed");
     }
   }
 
@@ -39,17 +40,17 @@ public class CreditCardValidatorImpl implements CreditCardValidatorService {
     Double fee = card.getBalanceTransferFee();
 
     if (enabled == null) {
-      throw new IllegalStateException("Balance transfer enabled flag cannot be null");
+      throw new InvalidParameterException("Balance transfer enabled flag cannot be null");
     }
 
     if (enabled) {
       if (fee == null || fee <= 0) {
-        throw new IllegalStateException(
+        throw new InvalidParameterException(
             "Balance transfer fee must be positive when balance transfer is enabled");
       }
     } else {
       if (fee != null && fee > 0) {
-        throw new IllegalStateException(
+        throw new InvalidParameterException(
             "Balance transfer fee must be 0 or null when balance transfer is disabled");
       }
     }

@@ -3,6 +3,7 @@ package com.episode6;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.episode6.enums.TransactionTypeEnum;
+import com.episode6.exceptions.InvalidParameterException;
 import com.episode6.models.CreditCard;
 import java.util.Collections;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class CreditCardBuilderNullTest {
 
   @Test
-  void shouldThrowIllegalStateExceptionWhenBalanceTransferFeeIsNull() {
+  void shouldThrowInvalidParameterExceptionWhenBalanceTransferFeeIsNull() {
     CreditCard.Builder builder =
         new CreditCard.Builder()
             .nickName("NullFeeCard")
@@ -20,13 +21,13 @@ class CreditCardBuilderNullTest {
             .balanceTransferEnabled(true);
 
     assertThrows(
-        IllegalStateException.class,
+        InvalidParameterException.class,
         () -> builder.balanceTransferFee(null).build(),
-        "Expected builder to throw IllegalStateExceptionException when balanceTransferFee is null");
+        "Expected builder to throw InvalidParameterException when balanceTransferFee is null");
   }
 
   @Test
-  void shouldThrowIllegalStateExceptionWhenTransactionTypesAreNull() {
+  void shouldThrowInvalidParameterExceptionWhenTransactionTypesAreNull() {
     CreditCard.Builder builder =
         new CreditCard.Builder()
             .nickName("NullTransactionsCard")
@@ -35,13 +36,13 @@ class CreditCardBuilderNullTest {
             .balanceTransferEnabled(false);
 
     assertThrows(
-        IllegalStateException.class,
+        InvalidParameterException.class,
         () -> builder.transactionTypesAllowed(null).build(),
-        "Expected builder to throw IllegalStateExceptionException when transactionTypesAllowed is null");
+        "Expected builder to throw InvalidParameterException when transactionTypesAllowed is null");
   }
 
   @Test
-  void shouldThrowIllegalStateExceptionWhenCreditLimitIsNull() {
+  void shouldThrowInvalidParameterExceptionWhenCreditLimitIsNull() {
     CreditCard.Builder builder =
         new CreditCard.Builder()
             .nickName("NullCreditLimit")
@@ -50,13 +51,13 @@ class CreditCardBuilderNullTest {
             .transactionTypesAllowed(Collections.singleton(TransactionTypeEnum.FEE));
 
     assertThrows(
-        IllegalStateException.class,
+        InvalidParameterException.class,
         () -> builder.creditLimit(null).build(),
-        "Expected builder to throw IllegalStateExceptionException when creditLimit is null");
+        "Expected builder to throw InvalidParameterException when creditLimit is null");
   }
 
   @Test
-  void shouldThrowIllegalStateExceptionWhenLatePaymentFeetIsNull() {
+  void shouldThrowInvalidParameterExceptionWhenLatePaymentFeetIsNull() {
     CreditCard.Builder builder =
         new CreditCard.Builder()
             .nickName("NullCreditLimit")
@@ -65,8 +66,8 @@ class CreditCardBuilderNullTest {
             .transactionTypesAllowed(Collections.singleton(TransactionTypeEnum.FEE));
 
     assertThrows(
-        IllegalStateException.class,
+        InvalidParameterException.class,
         () -> builder.latePaymentFee(null).build(),
-        "Expected builder to throw IllegalStateExceptionException when creditLimit is null");
+        "Expected builder to throw InvalidParameterException when creditLimit is null");
   }
 }

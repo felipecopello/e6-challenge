@@ -1,6 +1,6 @@
 package com.episode6.models;
 
-import static com.episode6.service.CreditCardValidatorImpl.validate;
+import static com.episode6.services.CreditCardValidatorImpl.validate;
 
 import lombok.Getter;
 import lombok.Setter;
