@@ -1,10 +1,10 @@
-package com.episode6.utils;
+package com.episode6.service;
 
 import com.episode6.enums.TransactionTypeEnum;
 import com.episode6.models.CreditCard;
 import java.util.Set;
 
-public class CreditCardValidator {
+public class CreditCardValidatorImpl implements CreditCardValidatorService {
 
   public static void validate(CreditCard card) {
     if (card == null) {
